@@ -15,7 +15,7 @@ const {
 	description,
 	preload,
 	canonical,
-	image = "https://cdn.lavelada.dev/og.jpg",
+	image = "/og.png", // Asegúrate de tener una imagen en public/og.png
 } = Astro.props as Props
 
 const determineCanonicalURL = () => {
@@ -31,15 +31,6 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 <meta charset="UTF-8" />
 <meta name="description" content={description} />
 
-<link rel="preconnect" href="https://cdn.lavelada.dev" />
-<link
-	rel="preload"
-	href={"https://cdn.lavelada.dev/fonts/font-atomic.woff2"}
-	as="font"
-	type="font/woff2"
-	crossorigin
-/>
-
 {
 	preload?.map(({ href, as, type, rel = "preload", crossorigin }) => (
 		<link {rel} {href} {as} {type} {crossorigin} />
@@ -50,11 +41,11 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 <meta name="viewport" content="width=device-width" />
 <meta name="theme-color" content="#d5ff00" />
 
-<meta name="keywords" content="velada, streamers, creadores, Ibai, boxeo, midudev" />
+<meta name="keywords" content="campo de creadores, futbol, influencers, show, evento" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@infoLaVelada" />
-<meta name="twitter:creator" content="@IbaiLlanos" />
+<meta name="twitter:site" content="@TuUsuarioDeTwitter" />
+<meta name="twitter:creator" content="@TuUsuarioDeTwitter" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(image, Astro.url)} />
@@ -63,7 +54,7 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:site_name" content="La Velada 4" />
+<meta property="og:site_name" content="Campo de Creadores" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="es_ES" />
 
