@@ -2,10 +2,7 @@
 
 <div align="center">
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+
 
 <a href="https://github.com/tu-usuario/tu-repositorio">
   <img width="300px" src="/public/c.png" alt="Logo Campo de Creadores" width="800" />
@@ -15,7 +12,7 @@
 
 Campo de Creadores es un evento que fusiona fútbol e influencers en un show único que cambia en cada edición.\
 
-<!-- [Diseño de Figma](...) · --> [Reportar error](https://github.com/tu-usuario/tu-repositorio/issues) · [Sugerir algo](https://github.com/tu-usuario/tu-repositorio/issues)
+
 
 </div>
 
@@ -24,12 +21,9 @@ Campo de Creadores es un evento que fusiona fútbol e influencers en un show ún
 
 - [Web oficial de Campo de Creadores](#web-oficial-de-campo-de-creadores)
 - [Características principales](#características-principales)
-  - [Capturas de pantalla](#capturas-de-pantalla)
 - [Para empezar](#para-empezar)
   - [Prerequisitos](#prerequisitos)
   - [Instalación](#instalación)
-- [Contribuir al proyecto](#contribuir-al-proyecto)
-  - [Contribuir desde Stackblitz](#contribuir-desde-stackblitz)
 - [🛠️ Stack](#️-stack)
 
 </details>
@@ -162,40 +156,3 @@ Aquí tienes una guía rápida:
 
 Por favor, consulta nuestra [guía de contribución](https://github.com/midudev/la-velada-web-oficial/blob/master/CONTRIBUTING.md) para saber cómo puedes empezar de la mejor manera y siguiendo [buenas prácticas](https://github.com/midudev/la-velada-web-oficial/blob/main/CONTRIBUTING.md#buenas-prácticas-).
 
-### Contribuir desde Stackblitz
-
-Si quieres contribuir de una manera mas sencilla, puedes iniciar este proyecto desde _Stackblitz_ usando tu cuenta de GitHub:
-
-[![Abrir en Stackblitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/midudev/la-velada-web-oficial)
-
-**¡Gracias a todos los colaboradores que han hecho posible este proyecto!**
-
-[![Contribuidores](https://contrib.rocks/image?repo=midudev/la-velada-web-oficial&max=500&columns=20)](https://github.com/midudev/la-velada-web-oficial/graphs/contributors)
-
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
-
-## 🛠️ Stack
-
-- [![Astro][astro-badge]][astro-url] - The web framework for content-driven websites.
-- [![Typescript][typescript-badge]][typescript-url] - JavaScript with syntax for types.
-- [![Tailwind CSS][tailwind-badge]][tailwind-url] - A utility-first CSS framework for rapidly building custom designs.
-- [![@midudev/tailwind-animations][animations-badge]][animations-url] - Easy peasy animations for your Tailwind project.
-
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
-
-[astro-url]: https://astro.build/
-[typescript-url]: https://www.typescriptlang.org/
-[tailwind-url]: https://tailwindcss.com/
-[animations-url]: https://tailwindcss-animations.vercel.app/
-[astro-badge]: https://img.shields.io/badge/Astro-fff?style=for-the-badge&logo=astro&logoColor=bd303a&color=352563
-[typescript-badge]: https://img.shields.io/badge/Typescript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&color=blue
-[tailwind-badge]: https://img.shields.io/badge/Tailwind-ffffff?style=for-the-badge&logo=tailwindcss&logoColor=38bdf8
-[animations-badge]: https://img.shields.io/badge/@midudev/tailwind-animations-ff69b4?style=for-the-badge&logo=node.js&logoColor=white&color=blue
-[contributors-shield]: https://img.shields.io/github/contributors/tu-usuario/tu-repositorio.svg?style=for-the-badge
-[contributors-url]: https://github.com/tu-usuario/tu-repositorio/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tu-usuario/tu-repositorio.svg?style=for-the-badge
-[forks-url]: https://github.com/tu-usuario/tu-repositorio/network/members
-[stars-shield]: https://img.shields.io/github/stars/tu-usuario/tu-repositorio.svg?style=for-the-badge
-[stars-url]: https://github.com/tu-usuario/tu-repositorio/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tu-usuario/tu-repositorio.svg?style=for-the-badge
-[issues-url]: https://github.com/tu-usuario/tu-repositorio/issues
