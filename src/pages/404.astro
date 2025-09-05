@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Error from "@/sections/Error.astro"
+
+export const prerender = true
+---
+
+<Layout
+	description="Web Oficial de Campo de creadores, evento deportivo de streamers y creadores de contenido"
+	title="Página no encontrada - Campo de Creadores"
+>
+	<main>
+		<Error
+			error="404"
+			message="Página no encontrada"
+			contextMessage="¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica que la dirección URL sea correcta."
+		/>
+	</main>
+</Layout>

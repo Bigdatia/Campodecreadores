@@ -1,0 +1,38 @@
+---
+interface Props {
+	id: string
+	class?: string
+	noEffect?: boolean
+	animated?: boolean
+}
+
+const { id, class: classList, noEffect, animated = true } = Astro.props as Props
+
+// Puedes cambiar esta URL por la ruta a tu imagen.
+// Si es una imagen local, ponla en la carpeta `public`. Por ejemplo: /logo.png
+const logoUrl = `${import.meta.env.BASE_URL}c8.png`
+---
+
+<div class:list={["relative", classList]}>
+	<!-- Esta imagen crea un efecto de desenfoque en el fondo si noEffect es true -->
+	{
+		noEffect && (
+			<img
+				src={logoUrl}
+				alt=""
+				aria-hidden="true"
+				class:list={[
+					"absolute inset-0 h-full w-full object-contain opacity-70 blur-xl md:blur-md",
+					{ "animate-fade-in-up": animated },
+				]}
+			/>
+		)
+	}
+	<!-- Esta es la imagen principal del logo -->
+	<img
+		src={logoUrl}
+		alt="Logotipo de Campo de Creadores"
+		id={id}
+		class:list={["relative h-full w-full object-contain", { "animate-fade-in-up": animated }]}
+	/>
+</div>

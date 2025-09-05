@@ -1,0 +1,39 @@
+---
+import Typography from "@/components/Typography.astro"
+import { EDITIONS } from "@/consts/editions"
+import { Image } from "astro:assets"
+---
+
+<section class="mt-10 flex flex-col items-center gap-10 md:mt-40">
+	<Typography as="h2" variant="h2" color="white" class="uppercase">
+		Ediciones Anteriores
+	</Typography>
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+		{
+			EDITIONS.map((edition) => (
+				<a
+					href={edition.url}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group flex flex-col items-center gap-4 transition hover:scale-105"
+				>
+					<Image
+						src={edition.poster}
+						alt={`Póster de ${edition.name}`}
+						width={300}
+						height={450}
+						class="aspect-[2/3] w-full max-w-xs rounded-lg object-cover shadow-lg"
+					/>
+					<Typography
+						as="h3"
+						variant="h3"
+						color="white"
+						class="text-center uppercase group-hover:text-primary"
+					>
+						{edition.name}
+					</Typography>
+				</a>
+			))
+		}
+	</div>
+</section>

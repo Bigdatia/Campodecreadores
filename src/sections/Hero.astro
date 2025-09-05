@@ -1,0 +1,76 @@
+---
+import AnimatedX from "@/components/AnimatedX.astro"
+import HeroLogo from "@/components/HeroLogo.astro"
+---
+
+<script>
+	const heroLink = document.querySelector("#hero-link")
+
+	setTimeout(() => {
+		if (heroLink) {
+			heroLink.classList.remove("opacity-0", "invisible")
+			heroLink.classList.add("opacity-100", "visible")
+		}
+	}, 5)
+</script>
+<section class="flex flex-col place-items-center gap-4 lg:gap-9">
+	<h1 class="sr-only bg-black/30">Presentación de Campo de Creadores</h1>
+	<a
+		id="hero-link"
+		class="invisible -rotate-6 animate-fade-in font-atomic text-2xl text-white underline-offset-8 opacity-0 transition duration-1000 hover:scale-110 hover:underline md:text-4xl"
+		href="https://youtube.com/@campo-de-creadores/videos"
+		target="_blank"
+		rel="noopener"
+		title="Enlace a Youtube"
+		aria-label="Enlace a Youtube"
+	>
+		Campo de Creadores
+	</a>
+	<div class="relative">
+		<!--<AnimatedX />-->
+
+		<div
+			class="absolute inset-0 -z-10 m-auto w-full rounded-full bg-black/50 blur-2xl md:size-[400px]"
+		>
+		</div>
+		<HeroLogo class="h-auto w-[250px] overflow-visible md:w-[500px]" id="hero-logo-main" noEffect />
+	</div>
+</section>
+<style>
+	a::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		width: 100%;
+		height: 3px;
+		background-color: white;
+		transform-origin: right;
+		transform: scaleX(0);
+		transition: transform 0.2s ease-in-out;
+	}
+
+	a:hover::before {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+	@media (prefers-reduced-motion) {
+		a::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: -2px;
+			width: 100%;
+			height: 3px;
+			background-color: white;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform 0s;
+		}
+
+		a:hover::before {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+	}
+</style>

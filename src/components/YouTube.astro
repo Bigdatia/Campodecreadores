@@ -1,0 +1,36 @@
+<svg fill="none" viewBox="0 0 120 84" role="img" aria-label="Logotipo de YouTube">
+	<path
+		class="background"
+		d="M117.5 13.2a14.8 14.8 0 0 0-10.4-10.4C96.9 0 60 0 60 0S23.1 0 12.9 2.8a14.8 14.8 0 0 0-10.4 10.4C0 23.1 0 42 0 42s0 18.9 2.5 28.8c1.4 5.7 6 10.3 10.4 10.4 10.2 2.8 47.1 2.8 47.1 2.8s36.9 0 47.1-2.8a14.8 14.8 0 0 0 10.4-10.4C120 60.9 120 42 120 42s0-18.9-2.5-28.8Z"
+		fill="var(--color-youtube-red, #F00)"></path>
+	<path class="play-icon" d="M48 60 79.5 42 48 24V60Z" fill="var(--color-youtube-white, #FFF)"
+	></path>
+</svg>
+
+<style>
+	.play-icon {
+		/* Centra el origen de la transformación en el medio del triángulo */
+		transform-origin: center;
+		animation: pulsePlayIcon 3s infinite ease-in-out;
+	}
+
+	@keyframes pulsePlayIcon {
+		/* El ícono está en su tamaño normal la mayor parte del tiempo */
+		0%,
+		10%,
+		100% {
+			transform: scale(1);
+		}
+		/* A los 5 segundos, se agranda un 15% para dar el efecto de "pulso" */
+		5% {
+			transform: scale(1.15);
+		}
+	}
+
+	/* Opcional: Si quieres que la animación se detenga si el usuario prefiere movimiento reducido */
+	@media (prefers-reduced-motion: reduce) {
+		.play-icon {
+			animation: none;
+		}
+	}
+</style>

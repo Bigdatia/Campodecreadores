@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro"
+
+import Countdown from "@/sections/Countdown.astro"
+import Hero from "@/sections/Hero.astro"
+import Info from "@/sections/Info.astro"
+import LaVeladaVideo from "@/sections/LaVeladaVideo.astro"
+import PresentationVideo from "@/sections/PresentationVideo.astro"
+import Promotions from "@/sections/Promotions.astro"
+import SelectYourBoxer from "@/sections/SelectYourBoxer.astro"
+import ThanksMessage from "@/sections/ThanksMessage.astro"
+---
+
+<Layout
+	description="Web Oficial de Campo de creadores, evento deportivo de streamers y creadores de contenido"
+	title="Campo de creadores"
+	canonical="https://www.campodecreadores.com"
+>
+	<Hero />
+
+	<main>
+		<ThanksMessage />
+		<PresentationVideo />
+		<Countdown />
+		<!--<LaVeladaVideo />-->
+		<!--<SelectYourBoxer />-->
+		<!--<Promotions /> -->
+		<Info />
+		<!-- <Boxing /> -->
+		<!--<Countdown /> -->
+	</main>
+</Layout>
