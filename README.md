@@ -15,7 +15,7 @@
 
 Campo de Creadores es un evento que fusiona fútbol e influencers en un show único que cambia en cada edición.\
 
-<!-- [Diseño de Figma](...) · --> [Reportar error](https://github.com/tu-usuario/tu-repositorio/issues) · [Sugerir algo](https://github.com/tu-usuario/tu-repositorio/issues)
+
 
 </div>
 
@@ -24,12 +24,9 @@ Campo de Creadores es un evento que fusiona fútbol e influencers en un show ún
 
 - [Web oficial de Campo de Creadores](#web-oficial-de-campo-de-creadores)
 - [Características principales](#características-principales)
-  - [Capturas de pantalla](#capturas-de-pantalla)
 - [Para empezar](#para-empezar)
   - [Prerequisitos](#prerequisitos)
   - [Instalación](#instalación)
-- [Contribuir al proyecto](#contribuir-al-proyecto)
-  - [Contribuir desde Stackblitz](#contribuir-desde-stackblitz)
 - [🛠️ Stack](#️-stack)
 
 </details>
