@@ -2,10 +2,7 @@
 
 <div align="center">
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+
 
 <a href="https://github.com/tu-usuario/tu-repositorio">
   <img width="300px" src="/public/c.png" alt="Logo Campo de Creadores" width="800" />
