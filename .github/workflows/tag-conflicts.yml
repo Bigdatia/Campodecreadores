@@ -16,47 +16,59 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Check for merge conflicts
+      - name: Label PRs with merge conflicts
         uses: actions/github-script@v7
-        id: conflict-checker
         env:
           CONFLICT_LABEL_NAME: "conflictos"
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           COMMENT_ON_CONFLICT: "⚠️ Esta Pull Request tiene conflictos. Por favor, resuélvelos antes de que podamos evaluar los cambios."
           COMMENT_ON_RESOLVE: "✅ ¡Los conflictos han sido resueltos! Un colaborador revisará pronto la Pull Request."
         with:
           script: |
-            const { CONFLICT_LABEL_NAME, GITHUB_TOKEN, COMMENT_ON_CONFLICT, COMMENT_ON_RESOLVE } = process.env; 
-            const { data: pullRequest } = await github.rest.pulls.get({ 
-              owner: context.repo.owner, 
-              repo: context.repo.repo, 
-              pull_number: context.issue.number, 
-            }); 
+            const { CONFLICT_LABEL_NAME, COMMENT_ON_CONFLICT, COMMENT_ON_RESOLVE } = process.env;
+            const { owner, repo } = context.repo;
+            const pull_number = context.issue.number;
 
-            if (pullRequest.mergeable_state === 'dirty') { 
-              await github.rest.issues.addLabels({ 
-                owner: context.repo.owner, 
-                repo: context.repo.repo, 
-                issue_number: context.issue.number, 
-                labels: [CONFLICT_LABEL_NAME], 
-              }); 
-              github.rest.issues.createComment({ 
-                owner: context.repo.owner, 
-                repo: context.repo.repo, 
-                issue_number: context.issue.number, 
-                body: COMMENT_ON_CONFLICT, 
-              }); 
-            } else { 
-              await github.rest.issues.removeLabel({ 
-                owner: context.repo.owner, 
-                repo: context.repo.repo, 
-                issue_number: context.issue.number, 
-                name: CONFLICT_LABEL_NAME, 
-              }).catch(() => {}); // Ignore if label doesn't exist 
-              github.rest.issues.createComment({ 
-                owner: context.repo.owner, 
-                repo: context.repo.repo, 
-                issue_number: context.issue.number, 
-                body: COMMENT_ON_RESOLVE, 
-              }); 
+            // It can take a few seconds for GitHub to calculate the mergeable state.
+            // We'll wait and retry a few times.
+            async function getMergeableState() {
+              for (let i = 0; i < 5; i++) {
+                const { data: pullRequest } = await github.rest.pulls.get({
+                  owner,
+                  repo,
+                  pull_number,
+                });
+                if (pullRequest.mergeable_state !== 'unknown') {
+                  return {
+                    mergeable_state: pullRequest.mergeable_state,
+                    labels: pullRequest.labels.map(label => label.name)
+                  };
+                }
+                await new Promise(r => setTimeout(r, 2000)); // wait 2 seconds
+              }
+              // Return a default after all retries
+              const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number });
+              return { mergeable_state: 'unknown', labels: pr.labels.map(l => l.name) };
+            }
+
+            const { mergeable_state, labels } = await getMergeableState();
+            const hasConflictLabel = labels.includes(CONFLICT_LABEL_NAME);
+
+            if (mergeable_state === 'dirty') {
+              if (!hasConflictLabel) {
+                console.log(`PR #${pull_number} has conflicts. Adding label and comment.`);
+                await github.rest.issues.addLabels({ owner, repo, issue_number: pull_number, labels: [CONFLICT_LABEL_NAME] });
+                await github.rest.issues.createComment({ owner, repo, issue_number: pull_number, body: COMMENT_ON_CONFLICT });
+              } else {
+                console.log(`PR #${pull_number} already has conflict label. No action needed.`);
+              }
+            } else if (mergeable_state !== 'unknown') { // 'clean', 'behind', 'unstable', etc.
+              if (hasConflictLabel) {
+                console.log(`PR #${pull_number} conflicts resolved. Removing label and commenting.`);
+                await github.rest.issues.removeLabel({ owner, repo, issue_number: pull_number, name: CONFLICT_LABEL_NAME });
+                await github.rest.issues.createComment({ owner, repo, issue_number: pull_number, body: COMMENT_ON_RESOLVE });
+              } else {
+                console.log(`PR #${pull_number} is clean and has no conflict label. No action needed.`);
+              }
+            } else {
+              console.log(`PR #${pull_number} mergeable state is 'unknown'. Skipping.`);
             }
