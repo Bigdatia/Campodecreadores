@@ -3,9 +3,11 @@ import type { Player } from "@/types/Boxer"
 import CombatFeatureCountry from "@/components/equipos/CombatFeatureCountry.astro"
 import CombatFeatureName from "@/components/equipos/CombatFeatureName.astro"
 
+type FeatureKey = keyof Pick<Player, "name" | "country" | "weight" | "height" | "age">
+
 interface Props {
 	boxer: Player
-	featureKey: string
+	featureKey: FeatureKey
 	concat?: string
 }
 
@@ -15,5 +17,5 @@ const { boxer, featureKey, concat } = Astro.props
 {featureKey === "country" && <CombatFeatureCountry boxer={boxer} />}
 {featureKey === "name" && <CombatFeatureName boxer={boxer} />}
 {!["country", "name"].includes(featureKey) && (
-	<td class="py-3 font-semibold">{boxer[featureKey as keyof typeof boxer]} {concat ?? ""}</td>
+	<td class="py-3 font-semibold">{boxer[featureKey]} {concat ?? ""}</td>
 )}

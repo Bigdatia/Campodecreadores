@@ -2,18 +2,21 @@
 import CombatFeatureCell from "@/components/equipos/CombatFeatureCell.astro"
 import Typography from "@/components/Typography.astro"
 import { BOXERS } from "@/consts/boxers"
+import type { Player } from "@/types/Boxer"
 
 interface Props {
 	boxerIds: string[]
 }
 
-const relevantBoxerData = Object.entries({
+type RelevantKey = keyof Pick<Player, "name" | "country" | "weight" | "height" | "age">
+const relevantKeys: RelevantKey[] = ["name", "country", "weight", "height", "age"]
+
+const relevantBoxerData: Record<RelevantKey, { label: string; concat?: string }> = {
 	name: {
 		label: "",
 	},
 	country: {
 		label: "País",
-		concat: undefined,
 	},
 	weight: {
 		label: "Peso",
@@ -23,23 +26,17 @@ const relevantBoxerData = Object.entries({
 		label: "Altura",
 		concat: "m",
 	},
-	// guard: {
-	// 	label: "Guardia",
-	// 	concat: undefined,
-	// },
-	// reach: {
-	// 	label: "Alcance",
-	// 	concat: "cm",
-	// },
 	age: {
 		label: "Edad",
 		concat: "años",
 	},
-})
+}
 
 const { boxerIds } = Astro.props
 
-const boxers = boxerIds.map((id) => BOXERS.find((boxer) => boxer.id === id)).filter(Boolean)
+const boxers = boxerIds
+	.map((id) => BOXERS.find((boxer) => boxer.id === id))
+	.filter((b): b is Player => !!b)
 const middleIndex = Math.ceil(boxers.length / 2)
 const leftBoxers = boxers.slice(0, middleIndex)
 const rightBoxers = boxers.slice(middleIndex)
@@ -60,8 +57,9 @@ const rightBoxers = boxers.slice(middleIndex)
 	<table class="mt-10 w-full table-fixed text-center text-white lg:text-lg">
 		<tbody>
 			{
-				relevantBoxerData.map(([key, { label, concat }]) => {
-					return key && (
+				relevantKeys.map((key) => {
+					const { label, concat } = relevantBoxerData[key]
+					return (
 						<tr class="mb-10 bg-gradient-to-b from-black/0 via-transparent/40 to-transparent/40 p-4">
 							{leftBoxers.map((boxer) => (
 								<CombatFeatureCell boxer={boxer} featureKey={key} concat={concat} />
