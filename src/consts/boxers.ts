@@ -5,7 +5,13 @@ const addGetters = (players: PlayerData[]): Player[] => {
 		...b,
 		clips: b.clips ?? [],
 		get age() {
-			return new Date(new Date().getTime() - this.birthDate.getTime()).getFullYear() - 1970
+			const today = new Date()
+			let age = today.getFullYear() - this.birthDate.getFullYear()
+			const m = today.getMonth() - this.birthDate.getMonth()
+			if (m < 0 || (m === 0 && today.getDate() < this.birthDate.getDate())) {
+				age--
+			}
+			return age
 		},
 	}))
 }

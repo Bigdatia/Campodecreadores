@@ -34,9 +34,11 @@ const relevantBoxerData: Record<RelevantKey, { label: string; concat?: string }>
 
 const { boxerIds } = Astro.props
 
+const boxersById = new Map(BOXERS.map((boxer) => [boxer.id, boxer]))
 const boxers = boxerIds
-	.map((id) => BOXERS.find((boxer) => boxer.id === id))
+	.map((id) => boxersById.get(id))
 	.filter((b): b is Player => !!b)
+
 const middleIndex = Math.ceil(boxers.length / 2)
 const leftBoxers = boxers.slice(0, middleIndex)
 const rightBoxers = boxers.slice(middleIndex)
