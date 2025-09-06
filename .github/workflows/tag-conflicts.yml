@@ -8,7 +8,7 @@ on:
   # We recommend `pull_request_target` so that github secrets are available.
   # In `pull_request` we wouldn't be able to change labels of fork PRs
   pull_request_target:
-    types: [synchronize]
+    types: [opened, reopened, synchronize]
 
 jobs:
   main:
@@ -16,10 +16,10 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: check if prs are dirty
-        uses: actions/label-merge-conflict@v2
+      - name: Label PRs with merge conflicts
+        uses: JulienKode/pull-request-merge-conflict-action@v3
         with:
-          dirty-label: "conflictos"
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          comment-on-dirty: "⚠️ Esta Pull Request tiene conflictos. Por favor, resuélvelos antes de que podamos evaluar los cambios."
-          comment-on-clean: "✅ ¡Los conflictos han sido resueltos! Un colaborador revisará pronto la Pull Request."
+          conflict_label_name: "conflictos"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          comment_on_conflict: "⚠️ Esta Pull Request tiene conflictos. Por favor, resuélvelos antes de que podamos evaluar los cambios."
+          comment_on_resolve: "✅ ¡Los conflictos han sido resueltos! Un colaborador revisará pronto la Pull Request."
