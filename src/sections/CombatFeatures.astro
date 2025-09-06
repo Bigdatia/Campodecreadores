@@ -1,6 +1,5 @@
 ---
-import CombatFeatureCountry from "@/components/equipos/CombatFeatureCountry.astro"
-import CombatFeatureName from "@/components/equipos/CombatFeatureName.astro"
+import CombatFeatureCell from "@/components/equipos/CombatFeatureCell.astro"
 import Typography from "@/components/Typography.astro"
 import { BOXERS } from "@/consts/boxers"
 
@@ -65,29 +64,11 @@ const rightBoxers = boxers.slice(middleIndex)
 					return key && (
 						<tr class="mb-10 bg-gradient-to-b from-black/0 via-transparent/40 to-transparent/40 p-4">
 							{leftBoxers.map((boxer) => (
-								<>
-									{key === "country" && <CombatFeatureCountry boxer={boxer} />}
-									{key === "name" && <CombatFeatureName boxer={boxer} />}
-									{!["country", "name"].includes(key) && (
-										<td class="py-3 font-semibold">
-											{boxer[key as keyof typeof boxer]}
-											{concat ?? ""}
-										</td>
-									)}
-								</>
+								<CombatFeatureCell boxer={boxer} featureKey={key} concat={concat} />
 							))}
 							<td class="w-48 text-primary">{label}</td>
 							{rightBoxers.map((boxer) => (
-								<>
-									{key === "country" && <CombatFeatureCountry boxer={boxer} />}
-									{key === "name" && <CombatFeatureName boxer={boxer} />}
-									{!["country", "name"].includes(key) && (
-										<td class="py-3 font-semibold">
-											{boxer[key as keyof typeof boxer]}
-											{concat ?? ""}
-										</td>
-									)}
-								</>
+								<CombatFeatureCell boxer={boxer} featureKey={key} concat={concat} />
 							))}
 						</tr>
 					)
