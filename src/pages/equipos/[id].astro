@@ -13,9 +13,11 @@ const getCombatById = (id: string) => {
 	return COMBATS.find((combat) => combat.id === id)
 }
 
+const boxersById = new Map(BOXERS.map((boxer) => [boxer.id, boxer]))
+
 const getBoxerNames = (boxerIds: string[]): string[] => {
 	return boxerIds
-		.map((boxerId) => BOXERS.find((b) => b.id === boxerId)?.name)
+		.map((boxerId) => boxersById.get(boxerId)?.name)
 		.filter((name): name is string => !!name)
 }
 

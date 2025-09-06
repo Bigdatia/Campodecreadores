@@ -1,6 +1,6 @@
-import { type Player } from "@/types/Boxer"
+import type { Player, PlayerData } from "@/types/Boxer"
 
-const addGetters = (players: Player[]): Player[] => {
+const addGetters = (players: PlayerData[]): Player[] => {
 	return players.map((b) => ({
 		...b,
 		clips: b.clips ?? [],
@@ -10,7 +10,7 @@ const addGetters = (players: Player[]): Player[] => {
 	}))
 }
 
-const playersData: Player[] = addGetters([
+const playersData: PlayerData[] = [
 	{
 		id: "el-mariana",
 		name: "El Mariana",
@@ -18,7 +18,6 @@ const playersData: Player[] = addGetters([
 		gender: "masculino",
 		birthDate: new Date(1998, 6, 23),
 		height: 1.95,
-		age: 25,
 		weight: 80.1,
 		country: "mx",
 		image: "/img/players/el-mariana.webp", // Asegúrate que esta ruta es correcta
@@ -55,7 +54,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(1995, 10, 3),
 		height: 1.71,
 		weight: 57.7,
-		age: 28,
 		country: "es",
 		image: "/img/players/zeling.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
@@ -91,7 +89,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(1994, 3, 4),
 		height: 1.64,
 		weight: 56,
-		age: 30,
 		country: "es",
 		image: "/img/players/nissaxter.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
@@ -131,7 +128,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(2000, 9, 9),
 		height: 1.65,
 		weight: 59.2,
-		age: 23,
 		country: "ar",
 		image: "/img/players/carreraaa.webp",
 		guard: "Izquierda", // encontrado
@@ -167,7 +163,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(1997, 8, 8),
 		height: 1.82,
 		weight: 103.9,
-		age: 26,
 		country: "ar",
 		image: "/img/players/la-cobra.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
@@ -204,7 +199,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(2001, 8, 20),
 		height: 1.97,
 		weight: 81.9,
-		age: 22,
 		country: "es",
 		image: "/img/players/plex.webp",
 		guard: "Izquierda", // encontrado
@@ -243,7 +237,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(2000, 11, 15),
 		height: 1.56,
 		weight: 52.8,
-		age: 23,
 		country: "mx",
 		image: "/img/players/alana.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
@@ -284,7 +277,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(1995, 2, 1),
 		height: 1.58,
 		weight: 56.2,
-		age: 30,
 		country: "mx",
 		image: "/img/players/amablitz.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
@@ -316,7 +308,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(2000, 10, 18),
 		height: 1.69,
 		weight: 59.6,
-		age: 23,
 		country: "es",
 		image: "/img/players/agustin51.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
@@ -351,7 +342,6 @@ const playersData: Player[] = addGetters([
 		birthDate: new Date(1998, 8, 28),
 		height: 1.9,
 		weight: 109.2,
-		age: 26,
 		country: "es",
 		image: "/img/players/guanyar.webp",
 		guard: "Izquierda", // encontrado
@@ -384,7 +374,7 @@ const playersData: Player[] = addGetters([
 			thumbnail: "/boxers/workoutThumbnails/guanyar.webp",
 		},
 	},
-])
+]
 
-export const PLAYERS: Player[] = playersData
-export const BOXERS: Player[] = playersData // Compatibilidad con componentes antiguos
+export const PLAYERS: Player[] = addGetters(playersData)
+export const BOXERS: Player[] = PLAYERS // Compatibilidad con componentes antiguos
