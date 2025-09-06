@@ -1,12 +1,3 @@
-export interface Team {
-	id: string
-	name: string
-	captainId: string
-	memberIds: string[]
-	video: string
-	url: string
-}
-
 export interface Combat {
 	id: string
 	title: string

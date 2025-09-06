@@ -1,4 +1,5 @@
 import type { Player, PlayerData } from "@/types/Boxer"
+import { COMBATS } from "./combats"
 
 const addGetters = (players: PlayerData[]): Player[] => {
 	return players.map((b) => ({
@@ -16,7 +17,7 @@ const addGetters = (players: PlayerData[]): Player[] => {
 	}))
 }
 
-const playersData: PlayerData[] = [
+const allPlayersData: PlayerData[] = [
 	{
 		id: "el-mariana",
 		name: "El Mariana",
@@ -381,6 +382,10 @@ const playersData: PlayerData[] = [
 		},
 	},
 ]
+
+const activeBoxerIds = new Set(COMBATS.flatMap((c) => c.boxers))
+
+const playersData: PlayerData[] = allPlayersData.filter((player) => activeBoxerIds.has(player.id))
 
 export const PLAYERS: Player[] = addGetters(playersData)
 export const BOXERS: Player[] = PLAYERS // Compatibilidad con componentes antiguos

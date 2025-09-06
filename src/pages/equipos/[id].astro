@@ -9,9 +9,7 @@ import CombatFeatures from "@/sections/CombatFeatures.astro"
 import CombatVideo from "@/sections/CombatVideo.astro"
 import Forecasts from "@/sections/Forecasts.astro"
 
-const getCombatById = (id: string) => {
-	return COMBATS.find((combat) => combat.id === id)
-}
+const combatsById = new Map(COMBATS.map((combat) => [combat.id, combat]))
 
 const boxersById = new Map(BOXERS.map((boxer) => [boxer.id, boxer]))
 
@@ -32,7 +30,7 @@ export const getStaticPaths = () => {
 }
 
 const { id } = Astro.params
-const combatData = getCombatById(id)
+const combatData = combatsById.get(id)
 const boxerNames = combatData ? getBoxerNames(combatData.boxers) : []
 
 if (!combatData) {
