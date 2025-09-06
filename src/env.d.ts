@@ -12,6 +12,6 @@ interface ImportMeta {
 
 declare global {
 	interface Window {
-		toast: function
+		toast: (message: string, options?: { type: "success" | "error" }) => void
 	}
 }
