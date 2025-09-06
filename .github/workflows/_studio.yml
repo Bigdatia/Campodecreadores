@@ -19,8 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8 # O la versión que uses en tu proyecto
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - uses: jaid/action-npm-install@v1.2.1
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
       - uses: withastro/action-studio@main
