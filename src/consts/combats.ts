@@ -1,6 +1,33 @@
-import type { Combat } from "@/types/Combat"
+import type { Combat, Team } from "@/types/Combat"
 
 export const REY_DE_LA_PISTA_ID = "5-rey-de-la-pista"
+
+export const TEAMS: Team[] = [
+	{
+		id: "jessi-uribe",
+		name: "Jessi Uribe",
+		captainId: "jessi",
+		memberIds: ["jessi", "agustin-51"],
+		video: "IPbkwObKdlU",
+		url: "https://www.instagram.com/jessiuribe3", // Reemplaza esta URL por la que necesites
+	},
+	{
+		id: "yeimy-serrano",
+		name: "Yeimy Serrano",
+		captainId: "yeimy-serrano",
+		memberIds: ["guanyar", "la-cobra"],
+		video: "jdchidzFY6Y",
+		url: "https://www.instagram.com/yeimiserrano1/", // TODO: Reemplazar con la URL real
+	},
+	{
+		id: "juandi-duque",
+		name: "Juandi Duque",
+		captainId: "juandi",
+		memberIds: ["plex", "el-mariana"],
+		video: "WnryYJ0k-_0",
+		url: "https://www.instagram.com/eljuandiduque/", // TODO: Reemplazar con la URL real
+	},
+]
 
 export const COMBATS: Combat[] = [
 	{
@@ -26,14 +53,6 @@ export const COMBATS: Combat[] = [
 		number: 3,
 		boxers: ["zeling", "nissaxter", "alana", "ama-blitz"],
 		teams: ["zeling-nissaxter", "alana-ama-blitz"],
-		video: "WnryYJ0k-_0",
-	},
-	{
-		id: "6-el-mariana-vs-plex",
-		title: "El Mariana vs Plex",
-		titleSize: [500, 150],
-		number: 6,
-		boxers: ["el-mariana", "plex"],
 		video: "WnryYJ0k-_0",
 	},
 ]
