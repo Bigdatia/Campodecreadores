@@ -1,5 +1,4 @@
 ---
-import DrawnXLogo from "@/components/DrawnXLogo.astro"
 import FooterContent from "@/components/FooterContent.astro"
 import HamburgerButton from "@/components/HamburgerButton.astro"
 import HeroLogo from "@/components/HeroLogo.astro"
@@ -33,7 +32,7 @@ const isCombatIntern = normalizedPathName.startsWith("/equipos/")
 ---
 
 <header class="mb-10 h-16 max-w-[100vw] lg:h-24">
-	<nav class="group flex h-full w-full items-center justify-between px-10 lg:justify-center">
+	<nav class="group flex h-full w-full items-center justify-end px-10 lg:justify-center">
 		{
 			pages.map(({ name, href, active, target }, key) => (
 				<>
@@ -55,7 +54,6 @@ const isCombatIntern = normalizedPathName.startsWith("/equipos/")
 				</>
 			))
 		}
-		<a href="/" class="block lg:hidden"><DrawnXLogo class:list={"w-10"} /></a>
 		<HamburgerButton class:list={"block lg:hidden"} id="menuButton" />
 		<div
 			class="fixed inset-0 z-[888] flex w-screen flex-col items-center overflow-x-auto bg-[var(--background-color)] px-10 lg:hidden"
