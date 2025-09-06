@@ -71,7 +71,7 @@ const middleIndex = boxers.length / 2
 										{key === "name" && <CombatFeatureName boxer={boxer} />}
 										{!["country", "name"].includes(key) && (
 											<td class="py-3 font-semibold">
-												{boxer[key as keyof (typeof boxers)[0]]}
+												{boxer[key as keyof typeof boxer]}
 												{concat}
 											</td>
 										)}

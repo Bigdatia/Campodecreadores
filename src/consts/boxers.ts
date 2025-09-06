@@ -206,7 +206,7 @@ const playersData: Player[] = addGetters([
 		weight: 81.9,
 		age: 22,
 		country: "es",
-		image: "/img/players/plex.webp", // Asegúrate que esta ruta es correcta
+		image: "/img/players/plex.webp",
 		guard: "Izquierda", // encontrado
 		reach: 168, // No encontrado
 		socials: {
@@ -353,7 +353,7 @@ const playersData: Player[] = addGetters([
 		weight: 109.2,
 		age: 26,
 		country: "es",
-		image: "/img/players/guanyar.webp", // Asegúrate que esta ruta es correcta
+		image: "/img/players/guanyar.webp",
 		guard: "Izquierda", // encontrado
 		reach: 168, // No encontrado
 		socials: {
