@@ -16,10 +16,47 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Label PRs with merge conflicts
-        uses: JulienKode/pull-request-merge-conflict-action@v3
+      - name: Check for merge conflicts
+        uses: actions/github-script@v7
+        id: conflict-checker
+        env:
+          CONFLICT_LABEL_NAME: "conflictos"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          COMMENT_ON_CONFLICT: "⚠️ Esta Pull Request tiene conflictos. Por favor, resuélvelos antes de que podamos evaluar los cambios."
+          COMMENT_ON_RESOLVE: "✅ ¡Los conflictos han sido resueltos! Un colaborador revisará pronto la Pull Request."
         with:
-          conflict_label_name: "conflictos"
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          comment_on_conflict: "⚠️ Esta Pull Request tiene conflictos. Por favor, resuélvelos antes de que podamos evaluar los cambios."
-          comment_on_resolve: "✅ ¡Los conflictos han sido resueltos! Un colaborador revisará pronto la Pull Request."
+          script: |
+            const { CONFLICT_LABEL_NAME, GITHUB_TOKEN, COMMENT_ON_CONFLICT, COMMENT_ON_RESOLVE } = process.env; 
+            const { data: pullRequest } = await github.rest.pulls.get({ 
+              owner: context.repo.owner, 
+              repo: context.repo.repo, 
+              pull_number: context.issue.number, 
+            }); 
+
+            if (pullRequest.mergeable_state === 'dirty') { 
+              await github.rest.issues.addLabels({ 
+                owner: context.repo.owner, 
+                repo: context.repo.repo, 
+                issue_number: context.issue.number, 
+                labels: [CONFLICT_LABEL_NAME], 
+              }); 
+              github.rest.issues.createComment({ 
+                owner: context.repo.owner, 
+                repo: context.repo.repo, 
+                issue_number: context.issue.number, 
+                body: COMMENT_ON_CONFLICT, 
+              }); 
+            } else { 
+              await github.rest.issues.removeLabel({ 
+                owner: context.repo.owner, 
+                repo: context.repo.repo, 
+                issue_number: context.issue.number, 
+                name: CONFLICT_LABEL_NAME, 
+              }).catch(() => {}); // Ignore if label doesn't exist 
+              github.rest.issues.createComment({ 
+                owner: context.repo.owner, 
+                repo: context.repo.repo, 
+                issue_number: context.issue.number, 
+                body: COMMENT_ON_RESOLVE, 
+              }); 
+            }
