@@ -2,8 +2,6 @@
 
 <div align="center">
 
-
-
 <a href="https://github.com/tu-usuario/tu-repositorio">
   <img width="300px" src="/public/c.png" alt="Logo Campo de Creadores" width="800" />
 </a>
@@ -11,8 +9,6 @@
 ## Web oficial de Campo de Creadores
 
 Campo de Creadores es un evento que fusiona fútbol e influencers en un show único que cambia en cada edición.\
-
-
 
 </div>
 
@@ -130,12 +126,6 @@ Campo de Creadores es un evento que fusiona fútbol e influencers en un show ún
    pnpm run start
    ```
 
-4. Autenticación mediante twitch (opcional)
-   - Accede a la [consola de twitch](https://dev.twitch.tv/), crea un proyecto y obtén tu client id y client secret
-   - Genera un hash aleatorio, puedes usar el siguiente comando `openssl rand -hex 32`
-   - Crea un archivo llamado `.env.local` y copia el contenido de [.env.demo](.env.demo) en él
-   - Reemplaza el texto copiado de demo en `.env.local` con tu id, secreto y hash
-
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## Contribuir al proyecto
@@ -155,4 +145,3 @@ Aquí tienes una guía rápida:
 7. Abre una [_pull request_](https://github.com/midudev/la-velada-web-oficial/pulls)
 
 Por favor, consulta nuestra [guía de contribución](https://github.com/midudev/la-velada-web-oficial/blob/master/CONTRIBUTING.md) para saber cómo puedes empezar de la mejor manera y siguiendo [buenas prácticas](https://github.com/midudev/la-velada-web-oficial/blob/main/CONTRIBUTING.md#buenas-prácticas-).
-
