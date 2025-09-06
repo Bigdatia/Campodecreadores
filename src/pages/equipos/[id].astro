@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets"
 
-import BackgroundVideo from "@/components/Combates/BackgroundVideo.astro"
 import { COMBATS, REY_DE_LA_PISTA_ID } from "@/consts/combats"
 import Layout from "@/layouts/Layout.astro"
 import CombatFeatures from "@/sections/CombatFeatures.astro"
@@ -60,7 +59,6 @@ export const prerender = true
 	description={`Combate entre ${formattedBoxerNames} en La Velada del Año IV`}
 	image={`https://cdn.lavelada.dev/matches/og-${id}-min.jpg`}
 >
-	<BackgroundVideo id={id} />
 	<main class="md:-mt-12">
 		<div
 			class="full-width relative z-[-10] flex h-[60vh] w-screen items-center justify-center overflow-x-clip md:h-[76vh]"
