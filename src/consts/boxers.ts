@@ -13,7 +13,7 @@ const addGetters = (players: Player[]): Player[] => {
 const playersData: Player[] = addGetters([
 	{
 		id: "el-mariana",
-		name: "Yeimy Serrano",
+		name: "El Mariana",
 		realName: "Osvaldo Palacios Flores",
 		gender: "masculino",
 		birthDate: new Date(1998, 6, 23),
@@ -133,7 +133,7 @@ const playersData: Player[] = addGetters([
 		weight: 59.2,
 		age: 23,
 		country: "ar",
-		image: "/img/players/jessi.png", // <- Cambia esta ruta
+		image: "/img/players/carreraaa.webp",
 		guard: "Izquierda", // encontrado
 		reach: 168, // No encontrado
 		socials: {
@@ -161,7 +161,7 @@ const playersData: Player[] = addGetters([
 	},
 	{
 		id: "la-cobra",
-		name: "Juandi Duque",
+		name: "La Cobra",
 		realName: "Lautaro Damián del Campo",
 		gender: "masculino",
 		birthDate: new Date(1997, 8, 8),
@@ -206,7 +206,7 @@ const playersData: Player[] = addGetters([
 		weight: 81.9,
 		age: 22,
 		country: "es",
-		image: "/img/players/juandi.png", // Asegúrate que esta ruta es correcta
+		image: "/img/players/plex.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
 		reach: 168, // No encontrado
 		socials: {
@@ -353,7 +353,7 @@ const playersData: Player[] = addGetters([
 		weight: 109.2,
 		age: 26,
 		country: "es",
-		image: "/img/players/yeimy.png", // Asegúrate que esta ruta es correcta
+		image: "/img/players/guanyar.webp", // Asegúrate que esta ruta es correcta
 		guard: "Izquierda", // encontrado
 		reach: 168, // No encontrado
 		socials: {

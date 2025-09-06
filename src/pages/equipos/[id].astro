@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets"
+import { CDN_URL } from "@/consts/urls"
 
 import { COMBATS, REY_DE_LA_PISTA_ID } from "@/consts/combats"
 import { BOXERS } from "@/consts/boxers"
@@ -19,7 +20,7 @@ const getBoxerNames = (boxerIds: string[]): string[] => {
 }
 
 const createImgRoute = (combateNumber: number, slug: string) => {
-	return `https://cdn.lavelada.dev/boxers/vote/vote-${combateNumber}-${slug}.webp`
+	return `${CDN_URL}/boxers/vote/vote-${combateNumber}-${slug}.webp`
 }
 
 export const getStaticPaths = () => {
@@ -33,17 +34,19 @@ const combatData = getCombatById(id)
 const boxerNames = combatData ? getBoxerNames(combatData.boxers) : []
 
 if (!combatData) {
-	return {
-		status: 404,
-	}
+	return new Response(null, { status: 404 })
 }
 
 const { teams, boxers } = combatData
-const [slug1, slug2] = teams ?? boxers
-const [image1, image2] = [
-	{ alt: slug1.replaceAll("-", " "), src: createImgRoute(combatData.number, slug1) },
-	{ alt: slug2.replaceAll("-", " "), src: createImgRoute(combatData.number, slug2) },
-]
+const slugs = teams ?? boxers
+
+const image1 = slugs[0]
+	? { alt: slugs[0].replaceAll("-", " "), src: createImgRoute(combatData.number, slugs[0]) }
+	: null
+
+const image2 = slugs[1]
+	? { alt: slugs[1].replaceAll("-", " "), src: createImgRoute(combatData.number, slugs[1]) }
+	: null
 
 const formatter = new Intl.ListFormat("es", {
 	style: "short",
@@ -60,14 +63,14 @@ export const prerender = true
 <Layout
 	title={`${combatData.title}· Combate #${combatData.number} de La Velada del Año IV`}
 	description={`Combate entre ${formattedBoxerNames} en La Velada del Año IV`}
-	image={`https://cdn.lavelada.dev/matches/og-${id}-min.jpg`}
+	image={`${CDN_URL}/matches/og-${id}-min.jpg`}
 >
 	<main class="md:-mt-12">
 		<div
 			class="full-width relative z-[-10] flex h-[60vh] w-screen items-center justify-center overflow-x-clip md:h-[76vh]"
 		>
 			{
-				!isKingOfTheHill && (
+				!isKingOfTheHill && image1 && (
 					<img
 						transition:name={`${combatData.id}-member-1`}
 						decoding="async"
@@ -80,17 +83,18 @@ export const prerender = true
 					/>
 				)
 			}
-			<Image
-				width={imageWidth}
-				height={imageHeight}
-				transition:name={`title-image-${id}`}
-				loading={"eager"}
-				class="inset-0 z-10 h-auto max-h-96 max-w-80 scale-100 object-contain sm:scale-110 lg:max-w-xl lg:scale-90"
-				src={`https://cdn.lavelada.dev/matches/title-${id}.webp`}
-				alt={`Fotografía del combate entre ${boxerNames.join(", ")}`}
-			/>
+			<div transition:name={`title-image-${id}`}>
+				<Image
+					width={imageWidth}
+					height={imageHeight}
+					loading={"eager"}
+					class="inset-0 z-10 h-auto max-h-96 max-w-80 scale-100 object-contain sm:scale-110 lg:max-w-xl lg:scale-90"
+					src={`${CDN_URL}/matches/title-${id}.webp`}
+					alt={`Fotografía del combate entre ${boxerNames.join(", ")}`}
+				/>
+			</div>
 			{
-				!isKingOfTheHill && (
+				!isKingOfTheHill && image2 && (
 					<img
 						transition:name={`${combatData.id}-member-2`}
 						decoding="async"
