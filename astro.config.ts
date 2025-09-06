@@ -2,6 +2,7 @@ import sitemap from "@astrojs/sitemap"
 import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
 import { defineConfig } from "astro/config"
+import { fileURLToPath } from "node:url"
 import { VitePWA } from "vite-plugin-pwa"
 
 // Helper imports
@@ -22,6 +23,11 @@ export default defineConfig({
 	output: "server",
 	site: seoConfig.baseURL,
 	vite: {
+		resolve: {
+			alias: {
+				"@": fileURLToPath(new URL("./src", import.meta.url)),
+			},
+		},
 		build: {
 			cssMinify: "lightningcss",
 		},
