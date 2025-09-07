@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
 
-# Host
-Host: https://www.campodecreadores.com
-
 # Sitemaps
 Sitemap: https://www.campodecreadores.com/sitemap-index.xml
