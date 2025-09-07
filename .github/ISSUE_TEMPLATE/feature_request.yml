@@ -9,7 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Antes de sugerir una feature, busca [features existentes](https://github.com/midudev/la-velada-web-oficial/issues)
+        Antes de sugerir una feature, busca [features existentes](https://github.com/Alvarog0218/campodecreadores/issues)
   - type: textarea
     attributes:
       label: Descripción

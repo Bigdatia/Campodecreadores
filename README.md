@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<a href="https://github.com/tu-usuario/tu-repositorio">
+<a href="https://github.com/Alvarog0218/campodecreadores">
   <img width="300px" src="/public/c.png" alt="Logo Campo de Creadores" width="800" />
 </a>
 
@@ -127,4 +127,3 @@ Campo de Creadores es un evento que fusiona fútbol e influencers en un show ún
    ```
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
-
