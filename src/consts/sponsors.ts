@@ -72,7 +72,7 @@ export const SPONSORS: Array<Sponsors> = [
 		},
 	},
 	{
-		id: "bridge-market",
+		id: "bridge-markets",
 		name: "Bridge Markets",
 		url: "https://bridgemarketslatam.com/",
 		image: {
