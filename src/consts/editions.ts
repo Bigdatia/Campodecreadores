@@ -18,7 +18,7 @@ export const EDITIONS: Edition[] = [
 		id: "2",
 		name: "Edición PolaFest",
 		year: 2025,
-		poster: "/img/posters/campo-2.webp", // Asegúrate que esta ruta es correcta
+		poster: "/img/posters/pola-fest.webp", // Asegúrate que esta ruta es correcta
 		url: "https://www.youtube.com/@campo-de-creadores/videos",
 	},
 ]
