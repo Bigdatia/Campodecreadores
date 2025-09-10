@@ -72,13 +72,13 @@ export const SPONSORS: Array<Sponsors> = [
 		},
 	},
 	{
-		id: "under",
-		name: "Under Armour",
-		url: "https://www.underarmour.com.co/",
+		id: "bridge-markets",
+		name: "Bridge Markets",
+		url: "https://bridgemarketslatam.com/",
 		image: {
 			width: 180,
 			height: 72,
-			fileName: "under.svg",
+			fileName: "bridge.svg",
 		},
 	},
 	{
