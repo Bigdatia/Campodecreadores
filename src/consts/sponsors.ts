@@ -78,7 +78,7 @@ export const SPONSORS: Array<Sponsors> = [
 		image: {
 			width: 180,
 			height: 72,
-			fileName: "jugalista.svg",
+			fileName: "jugalista.png",
 		},
 	},
 	{
