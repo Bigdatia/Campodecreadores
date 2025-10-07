@@ -72,13 +72,13 @@ export const SPONSORS: Array<Sponsors> = [
 		},
 	},
 	{
-		id: "bridge-markets",
-		name: "Bridge Markets",
-		url: "https://bridgemarketslatam.com/",
+		id: "jugalista",
+		name: "Jugalista",
+		url: "https://www.jugalista.com//",
 		image: {
 			width: 180,
 			height: 72,
-			fileName: "bridge.svg",
+			fileName: "jugalista.svg",
 		},
 	},
 	{
